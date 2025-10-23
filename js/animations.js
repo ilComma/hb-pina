@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const letterClosed = document.getElementById('letterClosed');
     const envelope = document.querySelector('.envelope');
     const letterContent = document.getElementById('letterContent');
+    const fioriContainer = document.getElementById('fiori-container');
     let isOpened = false;
     
     // Gestione click sulla lettera
@@ -25,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mostra il contenuto della lettera dopo l'apertura
         setTimeout(() => {
-            letterContent.classList.add('opened');
+            letterContent.classList.add('opened');            
+            fioriContainer.classList.add('show');
             showLetterContent();
         }, 800);
         
@@ -40,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Funzione per mostrare il contenuto della lettera
     function showLetterContent() {
-        console.log('💌 Lettera aperta! Le foto stanno iniziando a ruotare! 💕');
         
         // Mostra le foto che ruotano dopo un po'
         setTimeout(() => {
@@ -53,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const rotatingPhotos = document.getElementById('rotatingPhotos');
         if (rotatingPhotos) {
             rotatingPhotos.classList.add('show');
-            console.log('📸 Le foto stanno iniziando a uscire dalla busta! 📸');
             
             // Esci le foto una alla volta con delay di 250ms
             const photoItems = rotatingPhotos.querySelectorAll('.photo-item');

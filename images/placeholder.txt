@@ -1,0 +1,8 @@
+# Placeholder per l'immagine dei fiori
+
+Inserisci qui il file "fiori.png" per vedere l'animazione dei fiori.
+
+Il file dovrebbe essere:
+- Nome: fiori.png
+- Dimensione consigliata: 100x150px
+- Formato: PNG con trasparenza
