@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
     min-height: 100vh;
     overflow: hidden;
@@ -216,7 +216,7 @@ body {
     overflow-y: auto;
 }
 
-.letter-message {
+.letter-message h3{
     font-family: 'Dancing Script', cursive;
     color: #333;
     line-height: 1.6;
@@ -232,7 +232,7 @@ body {
 .letter-message p {
     font-size: 1rem;
     margin-bottom: 10px;
-    text-align: justify;
+    /*text-align: justify;*/
 }
 
 .signature {
@@ -358,23 +358,47 @@ body {
     animation: rotateAround 20s linear infinite;
 }
 
-.photo-placeholder {
+/* Stile Polaroid */
+.polaroid-photo {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #ff6b6b, #feca57);
-    border-radius: 50%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.polaroid-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+}
+
+.polaroid-image {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+
+.polaroid-text {
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border: 3px solid white;
-    transition: all 0.3s ease;
-}
-
-.photo-placeholder:hover {
-    transform: scale(1.2);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    font-family: 'Typewriter', serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    padding: 5px;
+    background: white;
+    border-radius: 0 0 6px 6px;
+    letter-spacing: 0.1em;
 }
 
 /* Animazione di uscita dalla busta */
@@ -472,7 +496,7 @@ body {
     
     .letter-paper {
         width: 180px;
-        height: 110px;
+        /*height: 110px;*/
         padding: 12px;
     }
     
@@ -520,8 +544,9 @@ body {
         height: 45px;
     }
     
-    .photo-placeholder {
-        font-size: 1.2rem;
+    .polaroid-text {
+        font-size: 0.6rem;
+        padding: 3px;
     }
     
     /* Fiori per mobile */
@@ -593,7 +618,7 @@ body {
     
     .letter-paper {
         width: 160px;
-        height: 100px;
+        /*height: 100px;*/
         padding: 10px;
     }
     
@@ -636,12 +661,13 @@ body {
     }
     
     .photo-item {
-        width: 35px;
-        height: 35px;
+        width: 115px;
+        height: 100px;
     }
     
-    .photo-placeholder {
-        font-size: 1rem;
+    .polaroid-text {
+        font-size: 0.5rem;
+        padding: 2px;
     }
     
     /* Fiori per schermi piccoli */
