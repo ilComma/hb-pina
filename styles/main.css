@@ -1,0 +1,626 @@
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Sfondo sbrilluccica */
+.sparkle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 4s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Particelle sbrilluccica */
+.sparkle-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: translateY(0px); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Container lettera */
+.letter-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Lettera chiusa */
+.letter-closed {
+    position: relative;
+    cursor: pointer;
+    animation: shake 3.5s infinite;
+}
+
+@keyframes shake {
+    0%, 90%, 100% { transform: translateX(0); }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85% { transform: translateX(-2px) rotate(-1deg); }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80% { transform: translateX(2px) rotate(1deg); }
+}
+
+/* Wrapper della busta */
+.envelope-wrapper {
+    position: relative;
+    width: 350px;
+    height: 230px;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+/* Busta realistica */
+.envelope {
+    position: relative;
+    width: 350px;
+    height: 230px;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+
+/* Corpo principale della busta */
+.envelope-body {
+    position: absolute;
+    width: 350px;
+    height: 230px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    z-index: 1;
+}
+
+/* Flap superiore */
+.envelope-flap-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+    border-top: 115px solid #f8f8f8;
+    transform-origin: bottom center;
+    transition: transform 0.8s ease;
+    z-index: 3;
+}
+
+/* Flap sinistro */
+.envelope-flap-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 115px solid transparent;
+    border-bottom: 115px solid transparent;
+    border-left: 175px solid #f0f0f0;
+    transform-origin: right center;
+    transition: transform 0.8s ease;
+    z-index: 2;
+}
+
+/* Flap destro */
+.envelope-flap-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 115px solid transparent;
+    border-bottom: 115px solid transparent;
+    border-right: 175px solid #f0f0f0;
+    transform-origin: left center;
+    transition: transform 0.8s ease;
+    z-index: 2;
+}
+
+/* Flap inferiore */
+.envelope-flap-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+    border-bottom: 115px solid #f0f0f0;
+    transform-origin: top center;
+    transition: transform 0.8s ease;
+    z-index: 2;
+}
+
+/* Sigillo della busta */
+.envelope-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    animation: heartbeat 2s ease-in-out infinite;
+    z-index: 4;
+}
+
+@keyframes heartbeat {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Contenuto della lettera (nascosto inizialmente) */
+.letter-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s ease;
+    z-index: 0;
+}
+
+.letter-paper {
+    width: 320px;
+    height: 210px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 10px auto;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.letter-message {
+    font-family: 'Dancing Script', cursive;
+    color: #333;
+    line-height: 1.6;
+}
+
+.letter-message h3 {
+    font-size: 1.4rem;
+    color: #ff6b6b;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.letter-message p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.signature {
+    margin-top: 15px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ff6b6b;
+}
+
+/* Testo "Aprimi" */
+.letter-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2d3436;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+    transition: opacity 0.5s ease;
+}
+
+/* Nascondi "Aprimi" quando la busta è aperta */
+.letter-container.opened .letter-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes glow {
+    from { text-shadow: 2px 2px 4px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.3); }
+    to { text-shadow: 2px 2px 4px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.6); }
+}
+
+/* Effetto hover sulla lettera */
+.letter-closed:hover .envelope-body {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.letter-closed:hover .envelope-seal {
+    animation: bounce 0.6s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* Animazioni per l'apertura della busta */
+.envelope.opened .envelope-flap-top {
+    transform: rotateX(-120deg);
+}
+
+.envelope.opened .envelope-flap-left {
+    transform: rotateY(-60deg);
+}
+
+.envelope.opened .envelope-flap-right {
+    transform: rotateY(60deg);
+}
+
+.envelope.opened .envelope-flap-bottom {
+    transform: rotateX(60deg);
+}
+
+.envelope.opened .envelope-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.letter-content.opened {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 5;
+}
+
+/* Ingrandimento graduale della busta dopo l'apertura */
+.envelope-wrapper.opened {
+    transform: scale(1.5);
+    transition: transform 1.2s ease-in-out;
+}
+
+.letter-container.opened {
+    transform: scale(1.5);
+    transition: transform 1.2s ease-in-out;
+}
+
+/* Foto che ruotano intorno alla lettera */
+.rotating-photos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.rotating-photos.show {
+    opacity: 1;
+}
+
+.photo-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.photo-item.exit {
+    opacity: 1;
+    animation: exitFromEnvelope 1s ease-out forwards;
+}
+
+.photo-item.rotate {
+    animation: rotateAround 20s linear infinite;
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 3px solid white;
+    transition: all 0.3s ease;
+}
+
+.photo-placeholder:hover {
+    transform: scale(1.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Animazione di uscita dalla busta */
+@keyframes exitFromEnvelope {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-100px) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-200px) rotate(calc(-1 * var(--rotation))) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animazione di rotazione continua */
+@keyframes rotateAround {
+    0% {
+        transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-200px) rotate(calc(-1 * var(--rotation)));
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(calc(var(--rotation) + 360deg)) translateY(-200px) rotate(calc(-1 * var(--rotation) - 360deg));
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .envelope-wrapper {
+        width: 200px;
+        height: 130px;
+    }
+    
+    .envelope {
+        width: 200px;
+        height: 130px;
+    }
+    
+    .envelope-body {
+        width: 200px;
+        height: 130px;
+    }
+    
+    .envelope-flap-top {
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-top: 65px solid #f8f8f8;
+    }
+    
+    .envelope-flap-left {
+        border-top: 65px solid transparent;
+        border-bottom: 65px solid transparent;
+        border-left: 100px solid #f0f0f0;
+    }
+    
+    .envelope-flap-right {
+        border-top: 65px solid transparent;
+        border-bottom: 65px solid transparent;
+        border-right: 100px solid #f0f0f0;
+    }
+    
+    .envelope-flap-bottom {
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 65px solid #f0f0f0;
+    }
+    
+    .letter-paper {
+        width: 180px;
+        height: 110px;
+        padding: 12px;
+    }
+    
+    .envelope-seal {
+        font-size: 1.5rem;
+    }
+    
+    .letter-text {
+        font-size: 1.2rem;
+    }
+    
+    /* Ingrandimento ridotto per mobile */
+    .envelope-wrapper.opened {
+        transform: scale(1.3);
+    }
+    
+    .letter-container.opened {
+        transform: scale(1.3);
+    }
+    
+    /* Font ridotto per mobile */
+    .letter-message h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .letter-message p {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .signature {
+        margin-top: 10px;
+        font-size: 0.7rem;
+    }
+    
+    /* Foto più piccole per mobile */
+    .rotating-photos {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .photo-item {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .photo-placeholder {
+        font-size: 1.2rem;
+    }
+    
+    /* Animazione di uscita per mobile */
+    @keyframes exitFromEnvelope {
+        0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+        }
+        50% {
+            transform: translate(-50%, -50%) translateY(-80px) scale(0.8);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-120px) rotate(calc(-1 * var(--rotation))) scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope-wrapper {
+        width: 180px;
+        height: 120px;
+    }
+    
+    .envelope {
+        width: 180px;
+        height: 120px;
+    }
+    
+    .envelope-body {
+        width: 180px;
+        height: 120px;
+    }
+    
+    .envelope-flap-top {
+        border-left: 90px solid transparent;
+        border-right: 90px solid transparent;
+        border-top: 60px solid #f8f8f8;
+    }
+    
+    .envelope-flap-left {
+        border-top: 60px solid transparent;
+        border-bottom: 60px solid transparent;
+        border-left: 90px solid #f0f0f0;
+    }
+    
+    .envelope-flap-right {
+        border-top: 60px solid transparent;
+        border-bottom: 60px solid transparent;
+        border-right: 90px solid #f0f0f0;
+    }
+    
+    .envelope-flap-bottom {
+        border-left: 90px solid transparent;
+        border-right: 90px solid transparent;
+        border-bottom: 60px solid #f0f0f0;
+    }
+    
+    .letter-paper {
+        width: 160px;
+        height: 100px;
+        padding: 10px;
+    }
+    
+    .envelope-seal {
+        font-size: 1.2rem;
+    }
+    
+    .letter-text {
+        font-size: 1rem;
+    }
+    
+    /* Ingrandimento ancora più ridotto per schermi piccoli */
+    .envelope-wrapper.opened {
+        transform: scale(1.25);
+    }
+    
+    .letter-container.opened {
+        transform: scale(1.25);
+    }
+    
+    .letter-message h3 {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .letter-message p {
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+    }
+    
+    .signature {
+        margin-top: 8px;
+        font-size: 0.6rem;
+    }
+    
+    /* Foto ancora più piccole */
+    .rotating-photos {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .photo-item {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .photo-placeholder {
+        font-size: 1rem;
+    }
+    
+    /* Animazione di uscita per schermi molto piccoli */
+    @keyframes exitFromEnvelope {
+        0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+        }
+        50% {
+            transform: translate(-50%, -50%) translateY(-70px) scale(0.8);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-100px) rotate(calc(-1 * var(--rotation))) scale(1);
+            opacity: 1;
+        }
+    }
+}

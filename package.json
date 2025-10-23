@@ -1,0 +1,19 @@
+{
+  "name": "compleanno-sito",
+  "version": "1.0.0",
+  "description": "Sito responsive per compleanno speciale",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/index.html",
+    "dev": "live-server --port=3000 --open=/index.html --watch=styles,js,images",
+    "build": "echo 'Sito statico - nessuna build necessaria'",
+    "serve": "http-server -p 3000 -o"
+  },
+  "keywords": ["compleanno", "responsive", "html", "css", "javascript"],
+  "author": "Tomma",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "http-server": "^14.1.1"
+  }
+}
