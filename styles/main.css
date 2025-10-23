@@ -223,36 +223,40 @@ body {
 }
 
 .letter-message h3 {
-    font-size: 1.4rem;
-    color: #ff6b6b;
-    margin-bottom: 12px;
-    text-align: center;
+    font-size: 1.4rem !important;
+    color: #ff6b6b !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+    font-family: 'Dancing Script', cursive !important;
 }
 
 .letter-message p {
-    font-size: 1rem;
-    margin-bottom: 10px;
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+    font-family: 'Poppins', sans-serif !important;
     /*text-align: justify;*/
 }
 
 .signature {
-    margin-top: 15px;
-    text-align: right;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #ff6b6b;
+    margin-top: 15px !important;
+    text-align: right !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    color: #ff6b6b !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 /* Testo "Aprimi" */
 .letter-text {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #2d3436;
-    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
-    animation: glow 2s ease-in-out infinite alternate;
-    transition: opacity 0.5s ease;
+    text-align: center !important;
+    margin-top: 20px !important;
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    color: #2d3436 !important;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5) !important;
+    animation: glow 2s ease-in-out infinite alternate !important;
+    transition: opacity 0.5s ease !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 /* Nascondi "Aprimi" quando la busta è aperta */
@@ -342,8 +346,8 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px;
-    height: 60px;
+    width: 60px !important;
+    height: 60px !important;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: all 0.3s ease;
@@ -360,17 +364,17 @@ body {
 
 /* Stile Polaroid */
 .polaroid-photo {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    border: 1px solid #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    border: 1px solid #e0e0e0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
 }
 
 .polaroid-photo:hover {
@@ -379,26 +383,26 @@ body {
 }
 
 .polaroid-image {
-    width: 100%;
-    height: 70%;
-    object-fit: cover;
-    border-radius: 6px 6px 0 0;
+    width: 100% !important;
+    height: 70% !important;
+    object-fit: cover !important;
+    border-radius: 6px 6px 0 0 !important;
 }
 
 .polaroid-text {
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Typewriter', serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-    padding: 5px;
-    background: white;
-    border-radius: 0 0 6px 6px;
-    letter-spacing: 0.1em;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.5rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-align: center !important;
+    padding: 1px !important;
+    background: white !important;
+    border-radius: 0 0 6px 6px !important;
+    letter-spacing: 0.1em !important;
 }
 
 /* Animazione di uscita dalla busta */
@@ -640,18 +644,18 @@ body {
     }
     
     .letter-message h3 {
-        font-size: 0.8rem;
+        font-size: 0.8rem !important;
         margin-bottom: 6px;
     }
     
     .letter-message p {
-        font-size: 0.7rem;
+        font-size: 0.7rem !important;
         margin-bottom: 6px;
     }
     
     .signature {
         margin-top: 8px;
-        font-size: 0.6rem;
+        font-size: 0.6rem !important;
     }
     
     /* Foto ancora più piccole */
@@ -661,8 +665,8 @@ body {
     }
     
     .photo-item {
-        width: 115px;
-        height: 100px;
+        width: 115px !important;
+        height: 100px !important;
     }
     
     .polaroid-text {
